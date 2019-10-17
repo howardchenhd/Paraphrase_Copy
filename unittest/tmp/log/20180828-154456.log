@@ -1,0 +1,56 @@
+2018-08-28 15:44:56,288 - INFO - Loading data...
+2018-08-28 15:44:56,301 - INFO - Done. Elapsed time 0:00
+2018-08-28 15:44:56,301 - INFO - Building model...
+2018-08-28 15:44:56,565 - INFO - DL4MT(
+  (encoder): Encoder(
+    (embedding): Embeddings(
+      (embeddings): Embedding(501, 24, padding_idx=0)
+    )
+    (gru): RNN(
+      (rnn): GRU(24, 24, batch_first=True, bidirectional=True)
+    )
+  )
+  (decoder): Decoder(
+    (embedding): Embeddings(
+      (embeddings): Embedding(502, 24, padding_idx=0)
+    )
+    (cgru_cell): CGRUCell(
+      (gru1): GRUCell(24, 24)
+      (attn): BahdanauAttention(
+        (linear_key): Linear(in_features=48, out_features=48, bias=True)
+        (linear_query): Linear(in_features=24, out_features=48, bias=True)
+        (linear_cov): Linear(in_features=10, out_features=48, bias=True)
+        (linear_cov_cov): Linear(in_features=10, out_features=48, bias=True)
+        (linear_key_cov): Linear(in_features=48, out_features=48, bias=True)
+        (linear_query_cov): Linear(in_features=24, out_features=48, bias=True)
+        (linear_att_cov): Linear(in_features=1, out_features=48, bias=True)
+        (gru): GRUCell(48, 10)
+        (linear_logit): Linear(in_features=48, out_features=1, bias=True)
+        (softmax): BottleSoftmax()
+        (tanh): Tanh()
+      )
+      (gru2): GRUCell(48, 24)
+    )
+    (linear_input): Linear(in_features=24, out_features=24, bias=True)
+    (linear_hidden): Linear(in_features=24, out_features=24, bias=True)
+    (linear_ctx): Linear(in_features=48, out_features=24, bias=True)
+    (linear_input_copy): Linear(in_features=24, out_features=1, bias=True)
+    (linear_hidden_copy): Linear(in_features=24, out_features=1, bias=True)
+    (linear_ctx_copy): Linear(in_features=48, out_features=1, bias=True)
+    (sigmoid): Sigmoid()
+    (dropout): Dropout(p=0.1)
+    (tanh): Tanh()
+  )
+  (generator): CopyGenerator(
+    (proj): Linear(in_features=24, out_features=502, bias=False)
+    (actn): Softmax()
+  )
+)
+2018-08-28 15:44:56,566 - INFO - NMTCopyCriterion(
+  (criterion): KLDivLoss()
+  (criterion_copy): CrossEntropyLoss()
+)
+2018-08-28 15:44:56,567 - INFO - Done. Elapsed time 0:00
+2018-08-28 15:44:56,567 - INFO - Building Optimizer...
+2018-08-28 15:44:56,568 - INFO - Done. Elapsed time 0:00
+2018-08-28 15:44:56,571 - INFO - Begin training...
